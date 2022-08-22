@@ -47,4 +47,13 @@ public class WeatherForecastController : ControllerBase
         // Retornamos OK cuando sucede su ejecución
         return Ok();
     }
+
+    [HttpDelete]
+    public IActionResult Delete(int index) {
+        // Removemos el indice de la lista
+        ListWeatherForecast.RemoveAt(index);
+
+        // Retornamo OK
+        return Ok();
+    }
 }
