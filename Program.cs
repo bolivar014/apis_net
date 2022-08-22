@@ -38,7 +38,8 @@ app.UseCors();
 app.UseAuthorization();
 
 // Creamos api de bienvenida
-app.UseWelcomePage();
+// app.UseWelcomePage();
+app.UseTimeMiddleware();
 
 app.MapControllers();
 
