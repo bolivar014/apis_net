@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace webapi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -33,6 +33,10 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
+    // Asignamos nombre de las rutas tipo GET por las cuales va a responder el endpoint
+    [Route("Get/weatherforecast")]
+    [Route("Get/weatherforecast2")]
+    [Route("[action]")]
     public IEnumerable<WeatherForecast> Get()
     {
         // Retornamos lista
@@ -48,7 +52,8 @@ public class WeatherForecastController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete]
+    // Indicamos que va a recibir una variable index por medio de la URL
+    [HttpDelete("{index}")]
     public IActionResult Delete(int index) {
         // Removemos el indice de la lista
         ListWeatherForecast.RemoveAt(index);
