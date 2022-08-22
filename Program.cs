@@ -7,6 +7,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/*
+    la orden en la cual se ejecutan los middlewares en .NET, SON:
+    * ExceptionHandler
+    * HSTS
+    * HttpRedirection
+    * Static Files
+    * Routing
+    * CORS
+    * Autentication
+    * Autorization
+    * --------- AQUI VAN LOS MIDDLEWARES CUSTOMIZADOS
+    * ENDPOINT
+    
+*/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,7 +33,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
+
 app.UseAuthorization();
+
+// Creamos api de bienvenida
+app.UseWelcomePage();
 
 app.MapControllers();
 
