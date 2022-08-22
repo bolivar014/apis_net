@@ -9,6 +9,8 @@ public class TimeMiddleware {
     }
 
     public async Task Invoke(Microsoft.AspNetCore.Http.HttpContext context) {
+        // 
+        await next.Invoke(context);
 
         // En caso que obtenga una variable tipo "time" en el request
         if(context.Request.Query.Any(p => p.Key == "time")) {
@@ -17,11 +19,10 @@ public class TimeMiddleware {
         }
 
         // Validamos
-        if(!context.Response.HasStarted) {
-            // 
-            await next.Invoke(context);
-        }
-        
+        // if(!context.Response.HasStarted) {
+        //     // 
+        //     await next.Invoke(context);
+        // }
     }
 }
 public static class TimeMiddlewareExtension {

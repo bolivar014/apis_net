@@ -6,6 +6,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// builder.Services.AddScoped<IHelloWorldService, HelloworldService>();
+builder.Services.AddScoped<IHelloWorldService>(p => new HelloworldService());
 
 /*
     la orden en la cual se ejecutan los middlewares en .NET, SON:
@@ -39,7 +41,7 @@ app.UseAuthorization();
 
 // Creamos api de bienvenida
 // app.UseWelcomePage();
-app.UseTimeMiddleware();
+// app.UseTimeMiddleware();
 
 app.MapControllers();
 
