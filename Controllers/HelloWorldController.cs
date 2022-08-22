@@ -10,7 +10,7 @@ public class HelloWorldController : ControllerBase {
     public HelloWorldController(IHelloWorldService helloWorld) {
         helloWorldService = helloWorld;
     }
-    
+    [HttpGet]
     // Metodo get que retorna Inyección de dependencia
     public IActionResult Get() {
         return Ok(helloWorldService.GetHelloWorld());

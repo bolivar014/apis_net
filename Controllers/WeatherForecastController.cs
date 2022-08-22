@@ -34,11 +34,13 @@ public class WeatherForecastController : ControllerBase
 
     [HttpGet(Name = "GetWeatherForecast")]
     // Asignamos nombre de las rutas tipo GET por las cuales va a responder el endpoint
-    [Route("Get/weatherforecast")]
-    [Route("Get/weatherforecast2")]
-    [Route("[action]")]
+    // [Route("Get/weatherforecast")]
+    // [Route("Get/weatherforecast2")]
+    // [Route("[action]")]
     public IEnumerable<WeatherForecast> Get()
     {
+        // Creamos log 
+        _logger.LogInformation("Retornando la lista de weatherforecast");
         // Retornamos lista
         return ListWeatherForecast;
     }
