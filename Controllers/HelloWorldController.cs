@@ -7,12 +7,24 @@ namespace webapi.Controllers;
 public class HelloWorldController : ControllerBase {
     IHelloWorldService helloWorldService;
 
-    public HelloWorldController(IHelloWorldService helloWorld) {
+    TareasContext dbcontext;
+
+    public HelloWorldController(IHelloWorldService helloWorld, TareasContext db) {
         helloWorldService = helloWorld;
+
+        dbcontext = db;
     }
     [HttpGet]
     // Metodo get que retorna Inyección de dependencia
     public IActionResult Get() {
         return Ok(helloWorldService.GetHelloWorld());
+    }
+
+    [HttpGet]
+    [Route("createdb")]
+    public IActionResult createDatabase() {
+        dbcontext.Database.EnsureCreated();
+
+        return Ok();
     }
 }

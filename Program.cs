@@ -1,3 +1,4 @@
+using webapi;
 using webapi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSqlServer<TareasContext>("Data Source=;Initial Catalog=;user id=;password=;");
+
 // Integrando inyección de dependencias
 // builder.Services.AddScoped<IHelloWorldService, HelloworldService>();
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloworldService());
