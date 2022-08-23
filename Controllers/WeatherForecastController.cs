@@ -11,11 +11,13 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
+    // Middleware de autenticación
     private readonly ILogger<WeatherForecastController> _logger;
 
     // Inicializamos la creación de lista 
     private static List<WeatherForecast> ListWeatherForecast = new List<WeatherForecast>();
 
+    // Creamos registro para la lista
     public WeatherForecastController(ILogger<WeatherForecastController> logger)
     {
         _logger = logger;
@@ -32,6 +34,7 @@ public class WeatherForecastController : ControllerBase
         }
     }
 
+    // Evento GET para listar obj GetWeatherForecast
     [HttpGet(Name = "GetWeatherForecast")]
     // Asignamos nombre de las rutas tipo GET por las cuales va a responder el endpoint
     // [Route("Get/weatherforecast")]
@@ -45,6 +48,7 @@ public class WeatherForecastController : ControllerBase
         return ListWeatherForecast;
     }
 
+    // Evento POST para la creación de registro en ListWeatherForecast
     [HttpPost]
     public IActionResult Post(WeatherForecast weatherForecast) {
         // Agregamos registro al modelo que estamos recibiendo
